@@ -17,15 +17,12 @@ function App() {
       
     });
 
-    db.collection("posts")
-      .orderBy("timestamp", "desc")
-      .onSnapshot(function (snapshot) {
-        setPosts(
-          snapshot.docs.map(function (document) {
+    db.collection("posts").orderBy("timestamp", "desc").onSnapshot(function (snapshot) {
+        setPosts(snapshot.docs.map(function (document){
             return { id: document.id, info: document.data() };
           })
-        );
-      });
+        )
+      })
   }, []);
 
   return (
@@ -35,7 +32,15 @@ function App() {
       </Header>
 
       {posts.map(function (val) {
-        return <Post info={val.info} id={val.id} />;
+
+
+        return (
+        
+        
+        <Post user = {user} info={val.info} id={val.id} />
+
+        
+        )
       })}
     </div>
   );
