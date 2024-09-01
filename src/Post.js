@@ -42,7 +42,7 @@ function Post(props){
 
 
       <div className="coments">{
-          comentarios.map(function(val){
+          comentarios?.map(function(val){
             return (
               <div>comentario</div>
             )
